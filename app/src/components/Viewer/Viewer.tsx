@@ -7,17 +7,6 @@ import { v4 as uuidv4 } from "uuid"
 
 import root from "../../main"
 
-const convertAttributeName = ( name: string ): string => {
-    switch ( name ) {
-    case "class":
-        return "className"
-    case "for":
-        return "htmlFor"
-    default:
-        return name
-    }
-}
-
 const convertStyleStringToObject = ( styleString: string ): React.CSSProperties => {
     const styleObject: Record<string, string> = {}
 
@@ -38,7 +27,7 @@ const convertElementToJSX = ( element: HTMLElement ): React.ReactNode => {
     // Extract attributes
     const attributes: Record<string, string> = Object.fromEntries(
         [...element.attributes].map( attr => {
-            const attrName = convertAttributeName( attr.name )
+            const attrName = attr.name.replace( "class", "className" ).replace( "for", "htmlFor" )
             if ( attrName === "style" )
                 return [attrName, convertStyleStringToObject( attr.value )]
             return [attrName, attr.value]
