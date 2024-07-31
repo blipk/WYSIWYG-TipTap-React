@@ -1,0 +1,69 @@
+.cards-container {
+    display: flex;
+}
+
+.flash-card {
+    text-align: center;
+    padding: 1em;
+    width: auto;
+    min-width: 500px;
+    perspective: 1000px;
+    cursor: pointer;
+
+    max-width: 33vw;
+
+    display: flex; /* Use Flexbox */
+    flex-direction: column;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+
+    display: grid;  /* Use CSS Grid */
+    grid-template-columns: 1fr; /* Single column grid */
+    grid-template-rows: 1fr; /* Single row grid */
+}
+
+.flash-card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    grid-area: 1 / 1 / 2 / 2; /* Positioned within the grid */
+    backface-visibility: hidden;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #A8C0FF;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+
+    min-height: 600px;
+
+    margin: 0;
+}
+
+.card-face p {
+    flex-grow: 1;
+}
+
+.card-face h2 {
+    align-self: center;
+
+    padding: 0;
+    margin: 0;
+}
+
+.card-front {
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
