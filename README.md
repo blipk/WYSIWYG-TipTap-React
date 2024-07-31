@@ -29,10 +29,7 @@ The React components the editor supports are defined in `app/src/components/Edit
 
 The format for `inputProps` currently specifies the name of the prop and the HTML input type to be used to gather it, which the `ComponentPropsModal.tsx` uses when inserting the component.
 
-This should be reconsidered as it may not be viable for more complex input for props.
-and the `ComponentConfig` interface updated to refelect the changes.
-
-It may be better to have each component define an additional component and function for gathering their props.
+This should be reconsidered as it may not be viable for components with more complex input props, it may be better to have each component define an additional component and function for gathering their props.
 
 The limitations of HTML attributes to store props should also be considered, and perhaps a single attribute with stringified JSON data be used.
 
