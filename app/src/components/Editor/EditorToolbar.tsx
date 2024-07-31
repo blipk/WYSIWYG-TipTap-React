@@ -31,10 +31,12 @@ type IconButtonProps = {
     className?: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
+const iconProps = {
+    size: 48,
+}
+
+
 const IconButton: React.FC<IconButtonProps> = ( { icon: IconComponent, children, ...props } ) => {
-    const iconProps = {
-        size: 48,
-    }
     const newProps = { ...props, ...{ icon: null } }
     newProps.className += " icon-button"
 
@@ -48,12 +50,6 @@ const IconButton: React.FC<IconButtonProps> = ( { icon: IconComponent, children,
 
 
 const EditorToolbar: React.FC<ToolbarProps> = ( { editor, customComponents } ) => {
-    const iconProps = {
-        size: 48,
-    }
-
-
-
     const [isModalOpen, setModalOpen] = useState( false )
     const [currentComponent, setCurrentComponent] = useState<ComponentConfig | null>( null )
 
