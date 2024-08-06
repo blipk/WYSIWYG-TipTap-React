@@ -9,8 +9,8 @@ You can specify HTML to load via the query string URL parameters:
 
 ### Building
 
-Comment out all components in `App.tsx`,
+Comment out all components and imports in `App.tsx`,
 then use the `build` script in package.json (`pnpm run build`),
 and then copy the `index.css` and `index.js` to this directory.
 
-Alternatively you could leave the `Editor` component in `App.tsx` and this will default to the editor if there's no HTML source specified.
+Alternatively you could leave the `Editor` component in `App.tsx` and this will default to displaying the `Editor` if there's no HTML source specified.
