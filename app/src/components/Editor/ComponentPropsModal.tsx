@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import { ComponentConfig } from "./custom-nodes/CustomNodeGenerator"
 
+import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
+
 interface ModalProps {
     isOpen: boolean;
     onClose: () => void;

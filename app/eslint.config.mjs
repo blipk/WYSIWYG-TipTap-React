@@ -11,7 +11,7 @@ export default tseslint.config(
     ...tseslint.configs.stylistic,
     ...[
         {
-            ignores: ["**/dist/"],
+            ignores: ["**/dist/", "**/Viewer/standalone/"],
         },
         {
             files   : ["**/*.{js,jsx,mjs,cjs,ts,tsx}"],

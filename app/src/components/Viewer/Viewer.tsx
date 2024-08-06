@@ -5,11 +5,18 @@ import { ComponentConfig } from "../Editor/custom-nodes/CustomNodeGenerator"
 
 import { v4 as uuidv4 } from "uuid"
 
+
 import root from "../../main"
 
 import "../Editor/editor-styles.scss"
 import "./viewer-styles.scss"
+
+import hljs from "highlight.js"
 import "../../../node_modules/highlight.js/styles/vs2015.css"
+
+
+// TODO: It would probably be a lot simpler and more consistent to just
+// render this with the Tiptap editor with the `editable: false` option
 
 
 const convertStyleStringToObject = ( styleString: string ): React.CSSProperties => {
@@ -70,7 +77,7 @@ const Viewer: React.FC<ViewerProps> = ( { htmlContent } ) => {
 
         // Replace custom component placeholders with actual React components
         const jsxChildren: React.ReactNode[] = []
-        const allElements = contentRef.current!.querySelectorAll<HTMLElement>( "*" )
+        const allElements = document.querySelectorAll<HTMLElement>( "#viewerContainer > *" )
         allElements.forEach( ( element ) => {
             const thisCustomComponent: ComponentConfig | undefined
                 = customComponents
@@ -78,21 +85,22 @@ const Viewer: React.FC<ViewerProps> = ( { htmlContent } ) => {
 
             if ( thisCustomComponent ) {
                 // convert the HTML attributes to props
-                console.log(thisCustomComponent)
                 const props: Record<string, string> = Object.fromEntries(
                     [...element.attributes].map( attr => [attr.name, attr.value] )
                 )
-                console.log(element)
 
                 const Component = thisCustomComponent.component
                 jsxChildren.push( <Component {...props} key={uuidv4()} /> )
             } else {
+                const blocks = element.querySelectorAll( "pre > code" )
+                blocks.forEach( ( block ) => {
+                    hljs.highlightElement( block as HTMLElement )
+                } )
                 jsxChildren.push( convertElementToJSX( element ) )
             }
         } )
-        // console.log(jsxChildren)
-        root.render( <div className={"tiptap ProseMirror"}>{jsxChildren}</div> )
 
+        root.render( <div className={"tiptap ProseMirror"}>{jsxChildren}</div> )
 
         // This method is simpler however ReactDOM.render is deprecated and the app will behave as if it's on React v17
         // import ReactDOM from "react-dom"
@@ -114,8 +122,9 @@ const Viewer: React.FC<ViewerProps> = ( { htmlContent } ) => {
     }, [htmlContent] )
 
     return (
-        // This actually doesn't do anything as we're rendering to the root component in the code above
-        <div className={"tiptap ProseMirror"} ref={contentRef}></div>
+        // This actually isn't rendered as we're rendering into the root element above
+        // Although it is used to gather all the elements and convert them appropriately
+        <div id={"viewerContainer"} ref={contentRef}></div>
     )
 }
 

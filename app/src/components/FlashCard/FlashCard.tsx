@@ -3,7 +3,7 @@ import DOMPurify from "dompurify"
 import Markdown from "react-markdown"
 import "./FlashCard.css"
 import { NodeViewWrapper } from "@tiptap/react"
-import { TipTapProps } from "../Editor/custom-nodes/CustomNodeGenerator"
+import { TipTapProps, propsAttributeHelper } from "../Editor/custom-nodes/CustomNodeGenerator"
 
 
 interface FlashCardProps {
@@ -14,14 +14,11 @@ interface FlashCardProps {
 
 type ExtendedCardProps = FlashCardProps & TipTapProps
 
+
 const FlashCard: React.FC<ExtendedCardProps> = ( props ) => {
     const [flipped, setFlipped] = useState<boolean>( false )
 
-    // Merge the prosemirror node attributes from the tiptap props with the component props,
-    // in order to pass props as attributes when inserting the component into the tiptap editor
-    const extendedProps = {...props, ...( props.node?.attrs || {} )}
-    const { title, content, alternateContent } = extendedProps
-
+    const { title, content, alternateContent } = propsAttributeHelper( props )
 
     const handleCardClick = () => {
         setFlipped( !flipped )
