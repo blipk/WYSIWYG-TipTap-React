@@ -1,6 +1,6 @@
-These files are part of the TipTap Based WYSIWYG Editor and Viewer
-that supports React Components.
-Copyright (C) 2024, Anthony Donato
+These files are part of the Tiptap Based WYSIWYG Editor and Viewer
+that supports embedding React Components (WYSIWYG-TipTap-React).
+Copyright (C) 2024, A.D.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
