@@ -16,16 +16,18 @@
 }
 
 .tiptap {
+    display: flex;
+    flex-direction: column;
+
     min-height: 30vh;
     width: 99vw;
 
     border: 1px solid;
     border-radius: 10px;
 
-    :first-child {
-        // margin-top: 0;
+    > :first-child {
+        padding-top: 10px;
     }
-
 
     .custom-component {
         display: flex;
@@ -40,14 +42,19 @@
     border-radius: 4px; */
     }
 
+    p {
+        margin: 0.5rem;
+    }
 
     /* Code Blocks */
     pre {
+        align-self: center;
         background: black;
         border-radius: 0.5rem;
         color: white;
-        margin: 1.5rem 0;
+        margin: 0.5rem 0;
         padding: 0.75rem 1rem;
+        max-width: fit-content;
     }
 
     pre code {

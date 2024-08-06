@@ -33,6 +33,9 @@ This should be reconsidered as it may not be viable for components with more com
 
 The limitations of HTML attributes to store props should also be considered, and perhaps a single attribute with stringified JSON data be used.
 
+Currently the Editor component works fine with converting the props, however the Viewer is not using Tiptap/ProseMirror directly,
+meaning that the components must only use props with all lowercase names as that is how HTML attributes work
+
 
 ## LICENCE - MIT
 

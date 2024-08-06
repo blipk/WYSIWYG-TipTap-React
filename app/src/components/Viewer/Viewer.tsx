@@ -7,6 +7,11 @@ import { v4 as uuidv4 } from "uuid"
 
 import root from "../../main"
 
+import "../Editor/editor-styles.scss"
+import "./viewer-styles.scss"
+import "../../../node_modules/highlight.js/styles/vs2015.css"
+
+
 const convertStyleStringToObject = ( styleString: string ): React.CSSProperties => {
     const styleObject: Record<string, string> = {}
 
@@ -73,9 +78,11 @@ const Viewer: React.FC<ViewerProps> = ( { htmlContent } ) => {
 
             if ( thisCustomComponent ) {
                 // convert the HTML attributes to props
+                console.log(thisCustomComponent)
                 const props: Record<string, string> = Object.fromEntries(
                     [...element.attributes].map( attr => [attr.name, attr.value] )
                 )
+                console.log(element)
 
                 const Component = thisCustomComponent.component
                 jsxChildren.push( <Component {...props} key={uuidv4()} /> )
@@ -83,7 +90,8 @@ const Viewer: React.FC<ViewerProps> = ( { htmlContent } ) => {
                 jsxChildren.push( convertElementToJSX( element ) )
             }
         } )
-        root.render( <div>{jsxChildren}</div> )
+        // console.log(jsxChildren)
+        root.render( <div className={"tiptap ProseMirror"}>{jsxChildren}</div> )
 
 
         // This method is simpler however ReactDOM.render is deprecated and the app will behave as if it's on React v17
@@ -106,7 +114,8 @@ const Viewer: React.FC<ViewerProps> = ( { htmlContent } ) => {
     }, [htmlContent] )
 
     return (
-        <div ref={contentRef}></div>
+        // This actually doesn't do anything as we're rendering to the root component in the code above
+        <div className={"tiptap ProseMirror"} ref={contentRef}></div>
     )
 }
 

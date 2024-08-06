@@ -21,7 +21,7 @@ import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight"
 // CodeBlock highlighting support
 import { common, createLowlight } from "lowlight"
 const lowlight = createLowlight( common )
-import "../../../node_modules/highlight.js/styles/default.css"
+import "../../../node_modules/highlight.js/styles/vs2015.css"
 
 
 // TODO add/configure these

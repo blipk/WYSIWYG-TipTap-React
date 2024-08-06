@@ -1,0 +1,22 @@
+// overrides for some of the styles from editor-styles.css
+
+.editor-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 100vw;
+    text-align: left;
+}
+
+.editor-wrapper button {
+    background-color: white;
+    border: black 1px dotted;
+    margin: 10px 2px 10px 2px;
+    padding: 8px;
+}
+
+.tiptap {
+    border: none;
+}
