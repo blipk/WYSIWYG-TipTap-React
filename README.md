@@ -26,6 +26,12 @@ Here's what it looks like:
 
 Here is a video showing the React Component in action: [Demo Video](./docs/editor_demo.mp4)
 
+
+https://github.com/user-attachments/assets/37f0e927-34ab-486f-be94-68f6550e010c
+
+
+
+
 ##### Viewer Component
 The project also contains a `Viewer` component that can statically display all the same content as the `Editor`, including reinstating the embedded React Components.
 
