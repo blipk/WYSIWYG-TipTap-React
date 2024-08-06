@@ -17,7 +17,6 @@ const ImageExtended = Image.extend( {
                 props : {
                     handleDOMEvents: {
                         drop( view: EditorView, event: DragEvent ) {
-                            console.log( "TEST" )
                             const hasFiles =
                                 event.dataTransfer &&
                                 event.dataTransfer.files &&

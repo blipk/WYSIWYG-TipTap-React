@@ -131,7 +131,6 @@ const DocxEditor: React.FC = () => {
 
     const handleDocxFile = ( arrayBuffer: ArrayBuffer ) => {
         const transformElement = ( element: any ) => {
-            console.log( element )
 
             if ( element.children ) {
                 const children = element.children.map( transformElement )

@@ -64,8 +64,6 @@ function generateCustomNodes<P>( components: ComponentConfig<P>[] ) {
             atom: true,
 
             addAttributes() {
-                console.log( "addAttributes", inputProps )
-                console.log( this.options )
                 return {
                     ...inputProps,
                     dataInputProps: {
