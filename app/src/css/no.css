@@ -29,7 +29,7 @@
     margin: 0;
     padding: 0;
     box-sizing: inherit;
-    /* box-sizing: border-box;*/ /* 1. Use a more-intuitive box-sizing model. */
+    box-sizing: border-box; /* 1. Use a more-intuitive box-sizing model. */
     color: inherit;
 }
 html, body {
